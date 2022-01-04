@@ -10,6 +10,8 @@ This repository shows an EJB 2 remote example running on WebSphere Liberty/Open 
 
 The sample shows several patterns of binding remote EJB names to JNDI including using `java:global`, `java:app`, `corbaname:`, and `java:comp/env` as well as injection using `@EJB`.
 
+
+
 Maven is used as the build system and the top level directory contains a [parent POM](pom.xml) that has the EJB JAR, EJB Client JAR, WAR, EAR and App Client as modules. You can use Java SE 8+ (including Java SE 11) to run the build to generate all the artifacts. Just run the Maven build at the top level directory:
 
    ```
