@@ -1,0 +1,46 @@
+<!-- 
+ * (C) Copyright Microsoft Corporation 2021.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<?xml version="1.0" encoding="UTF-8"?>
+<client description="Hello World Client">
+	<featureManager>
+		<feature>javaeeClient-8.0</feature>
+		<feature>appSecurityClient-1.0</feature>
+	</featureManager>
+	<keyStore id="defaultKeyStore" password="{xor}EzY9Oi0rJg==" />
+	<sslDefault sslRef="supportedClientAuthenticationSSLConfig" />
+	<ssl id="supportedClientAuthenticationSSLConfig"
+		keyStoreRef="defaultKeyStore" clientAuthenticationSupported="true" />
+
+	<orb id="defaultOrb">
+		<clientPolicy.clientContainerCsiv2>
+			<layers>
+				<authenticationLayer password="mypwd"
+					realm="BasicRealm" user="bob" establishTrustInClient="Supported"
+					mechanisms="GSSUP" />
+				<transportLayer />
+			</layers>
+		</clientPolicy.clientContainerCsiv2>
+	</orb>
+
+	<javaPermission className="java.net.SocketPermission"
+		name="*" actions="connect,listen,resolve" />
+	<javaPermission className="java.lang.RuntimePermission"
+		name="accessDeclaredMembers" />
+	<javaPermission className="java.lang.RuntimePermission"
+		name="getClassLoader" />
+	<enterpriseApplication id="hello-world"
+		location="hello-world.ear" name="hello-world" />
+</client>
