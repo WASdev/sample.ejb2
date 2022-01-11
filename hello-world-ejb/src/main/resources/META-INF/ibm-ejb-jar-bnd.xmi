@@ -1,0 +1,26 @@
+<!-- 
+ * (C) Copyright Microsoft Corporation 2021.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<?xml version="1.0" encoding="UTF-8"?>
+<ejbbnd:EJBJarBinding xmi:version="2.0"
+	xmlns:xmi="http://www.omg.org/XMI" xmlns:ejbbnd="ejbbnd.xmi"
+	xmlns:ejb="ejb.xmi" xmi:id="Ejb_Jar_Binding_1">
+	<ejbJar href="META-INF/ejb-jar.xml#Ejb_Jar_1" />
+	<ejbBindings xmi:id="Session_HelloWorld_Bnd"
+		jndiName="ejb/session/HelloWorld">
+		<enterpriseBean xmi:type="ejb:Session"
+			href="META-INF/ejb-jar.xml#Session_HelloWorld" />
+	</ejbBindings>
+</ejbbnd:EJBJarBinding>

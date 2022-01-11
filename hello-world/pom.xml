@@ -1,0 +1,106 @@
+<!-- 
+ * (C) Copyright Microsoft Corporation 2021.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<parent>
+		<artifactId>hello-world-modules</artifactId>
+		<groupId>hello-world</groupId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>hello-world</artifactId>
+	<packaging>ear</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>hello-world</groupId>
+			<artifactId>hello-world-ejb-client</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>hello-world</groupId>
+			<artifactId>hello-world-ejb</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>hello-world</groupId>
+			<artifactId>hello-world-web</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>hello-world</groupId>
+			<artifactId>hello-world-client</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>app-client</type>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>hello-world</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-acr-plugin</artifactId>
+				<version>3.1.0</version>
+				<extensions>true</extensions>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>3.2.0</version>
+				<configuration>
+					<version>7</version>
+					<defaultLibBundleDir>lib</defaultLibBundleDir>
+					<modules>
+						<webModule>
+							<groupId>hello-world</groupId>
+							<artifactId>hello-world-web</artifactId>
+							<contextRoot>/hello-world</contextRoot>
+							<bundleFileName>hello-world-web.war</bundleFileName>
+						</webModule>
+						<ejbModule>
+							<groupId>hello-world</groupId>
+							<artifactId>hello-world-ejb</artifactId>
+							<bundleFileName>hello-world-ejb.jar</bundleFileName>
+						</ejbModule>
+						<appClientModule>
+							<groupId>hello-world</groupId>
+							<artifactId>hello-world-client</artifactId>
+							<bundleFileName>hello-world-client.jar</bundleFileName>
+						</appClientModule>
+						<ejbClientModule>
+							<groupId>hello-world</groupId>
+							<artifactId>hello-world-ejb-client</artifactId>
+							<bundleFileName>hello-world-ejb-client.jar</bundleFileName>
+							<type>jar</type>
+						</ejbClientModule>
+					</modules>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
